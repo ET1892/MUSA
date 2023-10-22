@@ -19,10 +19,10 @@ const Account = () => {
       <header>
         <FlowNavBar />
       </header>
-      <body  className="flex flex-col justify-center items-center space-evenly space-y-20">
+      <body  className="flex flex-col justify-center items-center space-evenly space-y-10 p-20 m-10">
         <h1>Account</h1>
         <div>
-          <strong>Email:</strong>{user?.email}
+          <strong>Email: </strong>{user?.email}
         </div>
         <div>
               <Button variant="contained"onClick={handleLogout}>Logout</Button>

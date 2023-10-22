@@ -1,16 +1,18 @@
-import React from 'react'
 import FlowNavBar from './FlowNavBar'
 
 const Dashboard = () => {
   return (
-    <div>
+    <div className='bg-cover bg-no-repeat bg-center bg-fixed bg-stars-background'>
         <header>
-            <FlowNavBar />
+            <FlowNavBar/>
         </header>
-        <body className="flex flex-col justify-center items-center space-evenly space-y-10 p-10 m-10">
+        <body className="grid place-items-center h-screen  p-10 m-10">
             <h1>Dashboard</h1>
             <h3>Coming Soon</h3>
         </body>
+        <footer>
+          <h1 className="grid place-items-center h-screen  ">Footer</h1>
+        </footer>
     </div>
   )
 }
