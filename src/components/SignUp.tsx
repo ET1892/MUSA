@@ -33,10 +33,10 @@ const SignUp = () => {
   }
   return (
     <div>
-      <header>
-        <h1>Sign up to MUSA</h1>
+      <header className="flex flex-col justify-center items-center space-evenly space-y-8 m-10">
+        <h1 className="uppercase text-2xl font-bold">Sign up to MUSA</h1>
       </header>
-      <body>
+      <body className="flex flex-col justify-center items-center space-evenly space-y-8 m-10">
         <div>
           <FormControl variant="standard">
               <InputLabel htmlFor="input-with-icon-adornment">
@@ -88,7 +88,7 @@ const SignUp = () => {
           </div>
         </div>
         <p>
-          Already have an account with us? <Link to="/">Sign in</Link>
+          Already have an account with us? <Link to="/" className="underline text-blue-800">Sign in</Link>
         </p>
       </body>
     </div>

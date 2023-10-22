@@ -4,6 +4,8 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import './Auth.css'
+// import '../index.css'
+
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth }from './AuthContext'
 const SignIn = () => {
@@ -21,7 +23,7 @@ const SignIn = () => {
         try{
             await signIn(email, password);
             setPasswordError(false);
-            navigate('/account');
+            navigate('/dashboard');
         }
         catch(error: any){
             setPasswordError(true);
@@ -29,14 +31,14 @@ const SignIn = () => {
         }
     };
     return (
-        <div>
-            <header>
-                <h1>MUSA</h1>
-                <h4>Maynooth University Space Administration </h4>
+        <div className="space-y-8">
+            <header className="flex flex-col justify-center items-center space-evenly space-y-8 m-10">
+                <h1 className="uppercase text-2xl font-bold" >MUSA</h1>
+                <h4 className="uppercase text-xl font-bold">Maynooth University Space Administration </h4>
             </header>
-            <body>
-            <h1>Sign In</h1>
-            <div>
+            <body  className="flex flex-col justify-center items-center space-evenly space-y-8">
+            <h1 className="uppercase text-2xl ">Sign In</h1>
+            <div >
                 <FormControl variant="standard">
                     <InputLabel htmlFor="input-with-icon-adornment">
                         Email
@@ -47,7 +49,9 @@ const SignIn = () => {
                             height: '50px',
                         }}
                         id="input-with-icon-adornment"
-                        defaultValue="normal"
+                        defaultValue=""
+                        error={passwordError}
+                        placeholder="JohnSmith@gmail.com"
                         startAdornment={
                             <InputAdornment position="start">
                             <AccountCircle />
@@ -65,7 +69,7 @@ const SignIn = () => {
                         width: '300px',
                         height: '50px',
                     }}
-                    defaultValue="normal"
+                    defaultValue=""
                     error={passwordError}
                     id="standard-adornment-password"
                     type={showPassword ? 'text' : 'password'}
@@ -83,6 +87,17 @@ const SignIn = () => {
                     />
                 </FormControl>
             </div>
+            {passwordError && (
+                <div className="flex items-center p-1 mb-2 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                <svg className="flex-shrink-0 inline w-6 h-6 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                </svg>
+                <span className="sr-only">Info</span>
+                <div>
+                  <span className="font-medium"></span> Password or Email is incorrect.
+                </div>
+              </div>
+            )}
             <br />
             <div className="buttonTypes">
                 <div>
@@ -90,8 +105,8 @@ const SignIn = () => {
                 </div>
             </div>
             <div>
-                <p>
-                    Don't have an account with us? <Link to="/signUp">Sign up</Link>
+                <p >
+                    Don't have an account with us? <Link to="/signUp" className="underline text-blue-800">Sign up</Link>
                 </p>
             </div>
             </body>

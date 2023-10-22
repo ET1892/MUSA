@@ -1,19 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-// import { Auth } from './components/Auth';
 import { Routes, Route} from 'react-router-dom';
-import { Home } from './components/Home';
-
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import Account from './components/Account';
 import ProtectedRoute from './components/ProtectedRoute';
-//use navigation react - for page nav 
+import Dashboard from './components/Dashboard';
+import Community from './components/Community';
 import { useAuthState } from 'react-firebase-hooks/auth';
-
 import { auth } from './config/firebase';
 import { AuthContextProvider } from './components/AuthContext';
+import PicOfDay from './components/PicOfDay';
+import NearMiss from './components/NearMiss';
+
 
 function App() {
   const [user] = useAuthState(auth);
@@ -24,11 +23,34 @@ function App() {
         <Routes>
               <Route path="/" element={<SignIn />} />
               <Route path="signUp" element={<SignUp />} />
-              <Route path="home" element={<Home />} />
               <Route path="account" 
               element={
                 <ProtectedRoute>
                   <Account />
+                </ProtectedRoute>
+              } />
+              <Route path="dashboard"
+              element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              } />
+              <Route path="community"
+              element={
+                <ProtectedRoute>
+                  <Community />
+                </ProtectedRoute>
+              } />
+              <Route path="picOfDay"
+              element={
+                <ProtectedRoute>
+                  <PicOfDay />
+                </ProtectedRoute>
+              } />
+              <Route path="nearMiss"
+              element={
+                <ProtectedRoute>
+                  <NearMiss />
                 </ProtectedRoute>
               } />
         </Routes>
