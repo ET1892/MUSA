@@ -8,26 +8,43 @@ import './Auth.css'
 
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth }from './AuthContext'
+import { UserCredential } from "@firebase/auth";
 const SignIn = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const handleClickShowPassword = () => setShowPassword((show) => !show);
     const [passwordError, setPasswordError] = useState(false);
+    const [emailVerified, setEmailVerified] = useState(false);
     const navigate = useNavigate();
 
     const { signIn } = useAuth();
     
     const HandleSignIn= async (e: any) => {
         e.preventDefault();
-        try{
-            await signIn(email, password);
-            setPasswordError(false);
-            navigate('/dashboard');
-        }
-        catch(error: any){
+        try {
+            const userCredential = await signIn(email, password);
+        
+            if (userCredential && userCredential.user) {
+                const user = userCredential.user;
+        
+                if (user.emailVerified) {
+                    // User is signed in and email is verified, navigate to the dashboard
+                    setPasswordError(false);
+                    navigate('/dashboard');
+                } else {
+                    console.log('Email is not verified');
+                    setEmailVerified(true);
+                }
+            } else {
+                // Handle the case where the sign-in failed
+                console.log('Sign in failed');
+                setPasswordError(true);
+            }
+        } catch (error: any) {
+            // Handle other sign-in errors
+            console.log(error.message);
             setPasswordError(true);
-            console.error(error);
         }
         // 
     };
@@ -96,6 +113,17 @@ const SignIn = () => {
                     </div>
                 </div>
                 {passwordError && (
+                    <div className="flex items-center p-1 mb-2 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                    <svg className="flex-shrink-0 inline w-6 h-6 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                    </svg>
+                    <span className="sr-only">Info</span>
+                    <div>
+                    <span className="font-medium"></span> Check email to verify account.
+                    </div>
+                </div>
+                )}
+                {emailVerified && (
                     <div className="flex items-center p-1 mb-2 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
                     <svg className="flex-shrink-0 inline w-6 h-6 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>

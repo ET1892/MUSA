@@ -1,6 +1,8 @@
 import { createContext, useContext, ReactNode, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, UserCredential } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, UserCredential, sendEmailVerification } from 'firebase/auth';
 import { auth } from '../config/firebase';
+import { useNavigate } from 'react-router-dom';
+
 type User = {
   email: string | null;
   password: string | null;
@@ -11,7 +13,7 @@ type AuthContextType = {
   user: User | null;
   createUser: (email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
-  signIn: (email: string, password: string) => Promise<UserCredential>;
+  signIn: (email: string, password: string) => Promise<UserCredential | null>;
   // Add other authentication-related functions here
 };
 
@@ -25,13 +27,21 @@ type AuthContextProviderProps = {
 export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
 
     const [user, setUser] = useState<User | null>(null);
-
-    const createUser = (email: string, password: string) => {
-        return createUserWithEmailAndPassword(auth, email, password)
-            .then(() => {})
-            .catch((error) => {
-                throw new Error(`Failed to create user: ${error.message}`);
-            });
+    const navigate = useNavigate();
+    const createUser = async (email: string, password: string) => {
+        
+        try {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+    
+            // Send a verification email
+            if (user) {
+                await sendEmailVerification(user);
+                console.log('Verification email sent.');
+            }
+        } catch (error: any) {
+            throw new Error(`Failed to create user: ${error.message}`);
+        }
     };
 
     useEffect(() => {
@@ -53,8 +63,20 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
             console.error('Error during logout:', error);
         });
     }
-    const signIn = async (email: string, password: string) => {
-        return signInWithEmailAndPassword(auth, email, password)
+    
+    const signIn = async (email: string, password: string): Promise<UserCredential | null> => {
+        try {
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+            
+            if (user && user.emailVerified) {
+                return userCredential;
+            } else {
+                return null;
+            }
+        } catch (error: any) {
+            throw new Error(`Failed to sign in: ${error.message}`);
+        }
     };
 
     return (
