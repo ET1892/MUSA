@@ -29,86 +29,93 @@ const SignIn = () => {
             setPasswordError(true);
             console.error(error);
         }
+        // 
     };
     return (
-        <div className="space-y-8">
-            <header className="flex flex-col justify-center items-center space-evenly space-y-8 m-10">
+        <div>
+            <body className="flex flex-col  justify-center items-center space-evenly space-y-20 text-white h-screen bg-cover bg-no-repeat bg-stars-background">
                 <h1 className="uppercase text-2xl font-bold" >MUSA</h1>
                 <h4 className="uppercase text-xl font-bold">Maynooth University Space Administration </h4>
-            </header>
-            <body  className="flex flex-col justify-center items-center space-evenly space-y-8">
-            <h1 className="uppercase text-2xl ">Sign In</h1>
-            <div >
-                <FormControl variant="standard">
-                    <InputLabel htmlFor="input-with-icon-adornment">
-                        Email
-                    </InputLabel>
-                    <Input
-                        sx={{
-                            width: '300px',
-                            height: '50px',
-                        }}
-                        id="input-with-icon-adornment"
-                        defaultValue=""
-                        error={passwordError}
-                        placeholder="JohnSmith@gmail.com"
-                        startAdornment={
-                            <InputAdornment position="start">
-                            <AccountCircle />
-                            </InputAdornment>
-                        }
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                </FormControl>
-            </div>
-            <div>            
-                <FormControl  variant="standard">
-                    <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
-                    <Input  
-                    sx={{
-                        width: '300px',
-                        height: '50px',
-                    }}
-                    defaultValue=""
-                    error={passwordError}
-                    id="standard-adornment-password"
-                    type={showPassword ? 'text' : 'password'}
-                    endAdornment={
-                        <InputAdornment position="end">
-                        <IconButton
-                            aria-label="toggle password visibility"
-                            onClick={handleClickShowPassword}
-                            >
-                            {showPassword ? <VisibilityOff /> : <Visibility />}
-                        </IconButton>
-                        </InputAdornment>
-                    }
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </FormControl>
-            </div>
-            {passwordError && (
-                <div className="flex items-center p-1 mb-2 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
-                <svg className="flex-shrink-0 inline w-6 h-6 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
-                </svg>
-                <span className="sr-only">Info</span>
-                <div>
-                  <span className="font-medium"></span> Password or Email is incorrect.
+                <h1 className="uppercase text-2xl ">Sign In</h1>
+                <div className="bg-white bg-opacity-0 p-1 text-white">
+                    <div>
+                        <FormControl sx={{color: 'white'}} variant="standard">
+                            
+                            <InputLabel sx={{color: 'white'}} htmlFor="input-with-icon-adornment">
+                                Email
+                            </InputLabel>
+                            <Input
+                                sx={{
+                                    width: '300px',
+                                    height: '50px',
+                                    color: 'white',
+                                    ':before': { borderBottomColor: 'white' }
+
+                                }}
+                                id="input-with-icon-adornment"
+                                defaultValue=""
+                                error={passwordError}
+                                placeholder="JohnSmith@gmail.com"
+                                startAdornment={
+                                    <InputAdornment  sx={{color: 'white'}}position="start">
+                                    <AccountCircle />
+                                    </InputAdornment>
+                                }
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                        </FormControl>
+                    </div>
+                    <div>            
+                        <FormControl variant="standard">
+                            <InputLabel sx={{color: 'white'}} htmlFor="standard-adornment-password">Password</InputLabel>
+                            <Input  
+                            sx={{
+                                width: '300px',
+                                height: '50px',
+                                color: 'white',
+                                ':before': { borderBottomColor: 'white' }
+                            }}
+                            defaultValue=""
+                            error={passwordError}
+                            id="standard-adornment-password"
+                            type={showPassword ? 'text' : 'password'}
+                            endAdornment={
+                                <InputAdornment sx={{color: 'white'}} position="end">
+                                <IconButton
+                                    sx={{color: 'white'}}
+                                    aria-label="toggle password visibility"
+                                    onClick={handleClickShowPassword}
+                                    >
+                                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                                </IconButton>
+                                </InputAdornment>
+                            }
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                        </FormControl>
+                    </div>
                 </div>
-              </div>
-            )}
-            <br />
-            <div className="buttonTypes">
-                <div>
-                    <Button variant="contained" size="large" onClick={HandleSignIn}>Sign in</Button>
+                {passwordError && (
+                    <div className="flex items-center p-1 mb-2 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                    <svg className="flex-shrink-0 inline w-6 h-6 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                    </svg>
+                    <span className="sr-only">Info</span>
+                    <div>
+                    <span className="font-medium"></span> Password or Email is incorrect.
+                    </div>
                 </div>
-            </div>
-            <div>
-                <p >
-                    Don't have an account with us? <Link to="/signUp" className="underline text-blue-800">Sign up</Link>
-                </p>
-            </div>
+                )}
+                <div className="buttonTypes">
+                    <div>
+                        <Button variant="contained" size="large" onClick={HandleSignIn}>Sign in</Button>
+                    </div>
+                </div>
+                <div>
+                    <p >
+                        Don't have an account with us? <Link to="/signUp" className="underline text-blue-800">Sign up</Link>
+                    </p>
+                </div>
             </body>
       </div>
     );
