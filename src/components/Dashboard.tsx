@@ -1,18 +1,25 @@
 import FlowNavBar from './FlowNavBar'
-
+import { Carousel } from 'flowbite-react';
 const Dashboard = () => {
   return (
-    <div className='bg-cover bg-no-repeat bg-center bg-fixed bg-stars-background'>
-        <header>
+    <div className='h-screen bg-cover bg-no-repeat bg-stars-background'>
+        <header className="mb-10">
             <FlowNavBar/>
         </header>
-        <body className="grid place-items-center h-screen  p-10 m-10">
-            <h1>Dashboard</h1>
-            <h3>Coming Soon</h3>
+        <body  className="h-screen flex flex-col">
+            <h1 className="uppercase text-xl font-bold text-white">Dashboard</h1>
+            {/* <Carousel pauseOnHover>
+                <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white text-white">
+                  <h1>Slide 1</h1>
+                </div>
+                <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">
+                  Slide 2
+                </div>
+                <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">
+                  Slide 3
+                </div>
+            </Carousel> */}
         </body>
-        <footer>
-          <h1 className="grid place-items-center h-screen  ">Footer</h1>
-        </footer>
     </div>
   )
 }

@@ -24,12 +24,12 @@ const FlowNavBar: React.FC = () => {
                     <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-black">MUSA</span>
                   </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to="/dashboard" className={`block py-2 pl-3 pr-4  rounded  hover:bg-gray-500 ${isActiveLink('/dashboard')}`}>
                   <DashboardIcon  fontSize="large" sx={{ color: 'white' }} />
                   <span className="self-center text-lg font-semibold whitespace-nowrap text-white">Dashboard</span>
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link to="/community" className={`block py-2 pl-3 pr-4 rounded hover:bg-gray-500 ${isActiveLink('/community')}`}>
                   <ForumIcon  fontSize="large" sx={{ color: 'white' }} />
@@ -59,6 +59,7 @@ const FlowNavBar: React.FC = () => {
         </div>
       </nav>
     </div>
+
   );
 };
 

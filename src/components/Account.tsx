@@ -15,13 +15,13 @@ const Account = () => {
     }
   }
   return (
-    <div>
+    <div className="h-screen bg-cover bg-no-repeat bg-blackhole-background">
       <header>
         <FlowNavBar />
       </header>
-      <body  className="flex flex-col justify-center items-center space-evenly space-y-10 p-20 m-10">
-        <h1>Account</h1>
-        <div>
+      <body  className="h-screen flex flex-col justify-center items-center space-evenly space-y-10">
+        <h1 className="uppercase text-xl font-bold text-white">My Account</h1>
+        <div className="text-white">
           <strong>Email: </strong>{user?.email}
         </div>
         <div>
