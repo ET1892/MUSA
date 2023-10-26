@@ -7,16 +7,13 @@ import Account from './components/Account';
 import ProtectedRoute from './components/ProtectedRoute';
 import Dashboard from './components/Dashboard';
 import Community from './components/Community';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from './config/firebase';
 import { AuthContextProvider } from './components/AuthContext';
 import PicOfDay from './components/PicOfDay';
 import NearMiss from './components/NearMiss';
 
-
 function App() {
-  const [user] = useAuthState(auth);
-
+  
+  
   return (
     <div>
       <AuthContextProvider>

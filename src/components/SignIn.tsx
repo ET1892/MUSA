@@ -4,11 +4,8 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import './Auth.css'
-// import '../index.css'
-
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth }from './AuthContext'
-import { UserCredential } from "@firebase/auth";
 const SignIn = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");

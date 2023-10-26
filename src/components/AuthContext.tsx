@@ -47,12 +47,16 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
+                // console.log('User is signed in.');
                 setUser({
                     email: user.email,
                     password: null, // password is not returned by Firebase
-                });
+                }); 
+                navigate('/dashboard');
             } else {
+                console.log('User is not signed in.');
                 setUser(null);
+                navigate('/');
             }
         });
         return () => unsubscribe();
@@ -68,7 +72,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
-            
+
             if (user && user.emailVerified) {
                 return userCredential;
             } else {
