@@ -71,7 +71,7 @@ const SignIn = () => {
                         <div>
                             <FormControl sx={{color: 'white'}} variant="standard">
                                 <InputLabel sx={{color: 'white'}} htmlFor="input-with-icon-adornment">
-                                    Email
+                                    Email - not supported for Maynooth emails
                                 </InputLabel>
                                 <Input
                                     sx={{
