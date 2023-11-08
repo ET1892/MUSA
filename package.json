@@ -13,7 +13,7 @@
     "@types/node": "^16.18.58",
     "@types/react": "^18.2.28",
     "@types/react-dom": "^18.2.13",
-    "firebase": "^10.5.0",
+    "firebase": "^10.5.2",
     "flowbite": "^1.8.1",
     "flowbite-react": "^0.6.4",
     "react": "^18.2.0",
@@ -52,6 +52,7 @@
   },
   "devDependencies": {
     "@testing-library/react": "^14.0.0",
+    "@types/firebase": "^3.2.1",
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.31",
     "react-router-dom": "^6.17.0",
