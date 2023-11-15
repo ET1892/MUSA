@@ -4,12 +4,13 @@ import { useState } from 'react'
 import { FormControl, InputLabel, Input, InputAdornment, CircularProgress, Box } from '@mui/material'
 import { AccountCircle } from '@mui/icons-material'
 import { useAuth }from './AuthContext'
-import { auth } from '../config/firebase'
-// import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { auth, signInWithGooglePopup } from '../config/firebase'
 import { Visibility, VisibilityOff } from '@mui/icons-material'
 import { IconButton } from '@mui/material'
 import { Button } from '@mui/material'
 import './Auth.css'
+import GoogleIcon from '@mui/icons-material/Google';
+
 const SignUp = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -38,6 +39,14 @@ const SignUp = () => {
       console.log(e)
     }
   }
+  const logGoogleUser = async () => {
+    try {
+        await signInWithGooglePopup();
+        navigate('/dashboard');
+    } catch (error: any) {
+        console.log(error.message);
+    }
+}
   return (
     <div className="h-screen bg-cover bg-no-repeat bg-stars-background">
       {loading ? (
@@ -50,7 +59,7 @@ const SignUp = () => {
       ) : (
       <div className="h-screen flex flex-col items-center justify-center space-y-20">
         <header className="flex flex-col justify-center items-center space-evenly space-y-20 text-white">
-          <h1 className="uppercase text-2xl font-bold" >MUSA</h1>
+        <img src="../pictures/MUSA.png" className="h-40" alt="MUSA Logo" />
           <h4 className="uppercase text-xl font-bold">Maynooth University Space Administration </h4>
           <h1 className="uppercase text-2xl ">Sign Up</h1>
         </header>  
@@ -108,21 +117,26 @@ const SignUp = () => {
             </FormControl>
           </div>
           {passwordError && (
-                        <div className="flex items-center p-1 mb-2 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
-                        <svg className="flex-shrink-0 inline w-6 h-6 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
-                        </svg>
-                        <span className="sr-only">Info</span>
-                        <div>
-                        <span className="font-medium"></span> Account already exists.
-                        </div>
-                    </div>
-                    )}
+            <div className="flex items-center p-1 mb-2 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+              <svg className="flex-shrink-0 inline w-6 h-6 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+              </svg>
+              <span className="sr-only">Info</span>
+              <div>
+              <span className="font-medium"></span> Account already exists.
+              </div>
+          </div>
+          )}
           <div>
             <div>
-              <Button variant="contained"onClick={handleSubmit}>Register</Button>
+              <Button variant="contained" size="large" onClick={handleSubmit}>Register</Button>
             </div>
           </div>
+          <div>
+              <Button style={{backgroundColor: "black"}}variant="contained" size="large"  onClick={logGoogleUser}>
+                  <GoogleIcon/> Sign in with Google
+              </Button>
+            </div>
           <p className="text-white">
             Already have an account with us? <Link to="/" className="underline text-blue-800">Sign in</Link>
           </p>

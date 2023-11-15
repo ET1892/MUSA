@@ -6,29 +6,49 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
 import ListSubheader from '@mui/material/ListSubheader';
 import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
-import { Box } from '@mui/material';
-
-
-
-
-
+import {CircularProgress, Box} from '@mui/material';
 async function fetchImages() {
-  const response = await fetch('https://localhost:4000/images');
-  const json = await response.json();
-  return json;
+  
+  try{
+     const response = await fetch('https://localhost:4000/images');
+     const json = await response.json();
+     return json;
+  }
+  catch (error: any) {
+    console.log(error)
+  }
+ 
 }
 const PicOfDay = () => {
   
   const [data, setData] = useState<{ url: string }[] | null>(null);
-
   useEffect(() => {
+    
     fetchImages().then((data) => setData(data));
+
+
   }, []);
 
   if (!data) {
-    return <div>Failed to load refresh page</div>
+    return (
+        <div className="h-screen bg-black">
+      <header>
+        <FlowNavBar />
+      </header>
+      <body  className="h-screen flex flex-col justify-center items-center space-evenly space-y-10">
+        
+            <div className="h-screen flex flex-col items-center justify-center p-5"> 
+            <h1 className="uppercase text-xl font-bold text-white p-5">Error fetching data from server</h1>
+            <Box sx={{ display: 'flex'}}>
+                <CircularProgress />
+            </Box>
+            </div>
+        <div>
+        </div>
+      </body>
+      </div>
+    )
   }
-  console.log(data)
 const itemData = [
   {
     img: (data as { url: string,}[])[0].url,
@@ -101,13 +121,10 @@ const itemData = [
                     </p>
                 </div>
                 <div>
-                  <Box  sx={{border:2, borderColor: 'text.primary'}}>
-                          test
-                  </Box>
+                
                 <ImageList sx={{ width: 1500, height: 1000, border:2, borderColor: 'text.primary'}}>
                     <ImageListItem key="Subheader" cols={2}>
                         <ListSubheader component="div"></ListSubheader>
-                        
                     </ImageListItem>
                     {itemData.map((item) => (
                         <ImageListItem key={item.img} className='border border-color: rgb(255 255 255) p-2'>
@@ -125,7 +142,7 @@ const itemData = [
                                 sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
                                 aria-label={`info about ${item.title}`}
                             >
-                                <InfoIcon />
+                            <InfoIcon />
                             </IconButton>
                             }
                         />

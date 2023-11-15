@@ -1,11 +1,13 @@
 import { Button, Input } from '@mui/material'
 import React, { useState } from 'react'
- import { Firestore, collection, doc, setDoc } from 'firebase/firestore';
-import { db } from '../config/firebase';
+ import { Firestore, collection, doc, serverTimestamp , setDoc } from 'firebase/firestore';
+import {db } from '../config/firebase';
+import { useAuth } from './AuthContext';
 
 const SendCommunityMessage = () => {
     const [message, setMessage] = useState<string>('');
     const [error, setError] = useState<string>('');
+    const { user} = useAuth();
     async function sendMessage(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         // get the current timestamp
@@ -13,6 +15,9 @@ const SendCommunityMessage = () => {
 
         const data = {
             text: message,
+            name: user?.email,
+            photoURL: user?.photoURL,
+            createdAt: serverTimestamp(),
         };
 
         try {

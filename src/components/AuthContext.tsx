@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 type User = {
   email: string | null;
+  photoURL: string | null;
   password: string | null;
   // Add other user properties here
 };
@@ -51,6 +52,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
                 // console.log('User is signed in.');
                 setUser({
                     email: user.email,
+                    photoURL: user.photoURL,
                     password: null, // password is not returned by Firebase
                 }); 
                 

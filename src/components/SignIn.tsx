@@ -6,6 +6,8 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import './Auth.css'
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth }from './AuthContext'
+import { signInWithGooglePopup } from "../config/firebase";
+import GoogleIcon from '@mui/icons-material/Google';
 const SignIn = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -50,7 +52,16 @@ const SignIn = () => {
             setPasswordError(true);
             setLoading(false);
         }
+        
     };
+    const logGoogleUser = async () => {
+        try {
+            await signInWithGooglePopup();
+            navigate('/dashboard');
+        } catch (error: any) {
+            console.log(error.message);
+        }
+    }
     return (
         <div className="h-screen bg-cover bg-no-repeat bg-stars-background">
 
@@ -63,7 +74,7 @@ const SignIn = () => {
         ) : (
             <div className="h-screen flex flex-col items-center justify-center space-y-20" >
                 <header className="flex flex-col justify-center items-center space-evenly space-y-20 text-white">
-                    <h1 className="uppercase text-2xl font-bold" >MUSA</h1>
+                    <img src="../pictures/MUSA.png" className="h-40" alt="MUSA Logo" />
                     <h4 className="uppercase text-xl font-bold">Maynooth University Space Administration </h4>
                     <h1 className="uppercase text-2xl ">Sign In</h1>
                 </header>
@@ -122,6 +133,7 @@ const SignIn = () => {
                                     onChange={(e) => setPassword(e.target.value)}
                                 />
                             </FormControl>
+                           
                         </div>
                     {passwordError && (
                         <div className="flex items-center p-1 mb-2 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
@@ -149,6 +161,11 @@ const SignIn = () => {
                         <div>
                             <Button variant="contained" size="large" onClick={HandleSignIn}>Sign in</Button>
                         </div>
+                    </div>
+                    <div>
+                        <Button style={{backgroundColor: "black"}} variant="contained" size="large"  onClick={logGoogleUser}>
+                            <GoogleIcon/> Sign in with Google
+                        </Button>
                     </div>
                     <div>
                         <p >
