@@ -74,7 +74,7 @@ const SignIn = () => {
         ) : (
             <div className="h-screen flex flex-col items-center justify-center space-y-20" >
                 <header className="flex flex-col justify-center items-center space-evenly space-y-20 text-white">
-                    <img src="../pictures/MUSA.png" className="h-40" alt="MUSA Logo" />
+                    <img src="../pictures/MUSA.png" className="h-40 rounded-full" alt="MUSA Logo" />
                     <h4 className="uppercase text-xl font-bold">Maynooth University Space Administration </h4>
                     <h1 className="uppercase text-2xl ">Sign In</h1>
                 </header>

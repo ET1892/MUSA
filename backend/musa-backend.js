@@ -107,7 +107,7 @@ function requestURLForPictures (date_object)
 
 // Create the server:
 const server = express();
-const port = 3000;
+const port = 4000;
 server.use(cors());
 
 // These store global data from the NASA API:

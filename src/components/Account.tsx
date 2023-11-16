@@ -15,21 +15,20 @@ const Account = () => {
     }
   }
   return (
-    <div className="h-screen bg-cover bg-no-repeat bg-blackhole-background">
+    <div>
       <header>
         <FlowNavBar />
       </header>
-      <body  className="h-screen flex flex-col justify-center items-center space-evenly space-y-10">
+      <main className="flex flex-col justify-center items-center space-y-10 h-screen  bg-cover bg-no-repeat bg-blackhole-background">
         <h1 className="uppercase text-xl font-bold text-white">My Account</h1>
         <div className="text-white">
           <strong>Email: </strong>{user?.email}
         </div>
         <div>
-              <Button variant="contained"onClick={handleLogout}>Logout</Button>
+          <Button variant="contained" onClick={handleLogout}>Logout</Button>
         </div>
-      </body>
+      </main>
     </div>
-  )
+  );
 }
-
 export default Account

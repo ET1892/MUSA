@@ -156,7 +156,7 @@ const Dashboard = () => {
 
   return (
     <div className='h-screen'>
-      <header className="mb-10">
+      <header className="">
         <FlowNavBar />
       </header>
       <iframe

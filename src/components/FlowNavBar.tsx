@@ -13,17 +13,16 @@ const FlowNavBar: React.FC = () => {
 
     return (
         <div>
-            <nav className="flex flex-row justify-center items-center bg-[#111113] fixed w-full z-20 top-0 left-0 text-white">
+            <nav className="flex flex-row justify-center items-center bg-[#111113] w-full z-20 top-0 left-0 text-white">
                 <div className="max-w-screen-xl p-3"  >
                     <div className="flex flex-row" id="navbar-sticky">
                         <ul className="flex flex-row  items-center p-4 mt-4 text-lg">
                             <li>
                                 <Link to="/dashboard" className={`py-2 pl-3 pr-4  ml-0`}>
-                                    <img src="../pictures/MUSA.png" className="h-20 mr-3" alt="MUSA Logo" />
+                                    <img src="../pictures/MUSA.png" className="h-20 mr-3 rounded-full" alt="MUSA Logo" />
                                     <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-black"></span>
                                 </Link>
                             </li>
-                            
                             <li>
                                 <Link to="/picOfDay" className={`py-2 pl-3 pr-4 rounded hover:bg-gray-500 ${isActiveLink('/picOfDay')}`}>
                                     <CameraEnhanceIcon fontSize="large" sx={{ color: 'white' }} />

@@ -36,7 +36,6 @@ const PicOfDay = () => {
         <FlowNavBar />
       </header>
       <body  className="h-screen flex flex-col justify-center items-center space-evenly space-y-10">
-        
             <div className="h-screen flex flex-col items-center justify-center p-5"> 
             <h1 className="uppercase text-xl font-bold text-white p-5">Error fetching data from server</h1>
             <Box sx={{ display: 'flex'}}>
