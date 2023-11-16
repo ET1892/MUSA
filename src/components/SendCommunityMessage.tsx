@@ -5,7 +5,7 @@ import { db } from '../config/firebase';
 import { useAuth } from './AuthContext';
 import { match } from 'assert';
 
-import badWordsList from './en.json';
+import badWordsList from '../config/en.json'; //bad words list
 
 
 
