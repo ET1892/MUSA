@@ -4,10 +4,10 @@ import { auth } from '../config/firebase';
 import { useNavigate } from 'react-router-dom';
 
 type User = {
+  uid: string;
   email: string | null;
   photoURL: string | null;
   password: string | null;
-  // Add other user properties here
 };
 
 type AuthContextType = {
@@ -51,6 +51,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
                 navigate('/dashboard');
                 // console.log('User is signed in.');
                 setUser({
+                    uid: user.uid,
                     email: user.email,
                     photoURL: user.photoURL,
                     password: null, // password is not returned by Firebase

@@ -5,14 +5,15 @@ import { Send } from '@mui/icons-material'
 import SendCommunityMessage from './SendCommunityMessage'
 const Community = () => {
     return (
-        <div>
+        <div className="flex flex-col h-screen ">
             <header>
                 <FlowNavBar />
             </header>
-            <body className="h-screen flex justify-center items-center space-evenly space-y-10">
-                <Chat />
-            </body>
-            <SendCommunityMessage/>
+            <main className="flex-1 flex flex-col bg-black ">
+                <div className="flex-grow overflow-auto">
+                    <Chat/> 
+                </div>
+            </main>
         </div>
       )
 }
