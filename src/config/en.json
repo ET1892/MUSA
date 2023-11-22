@@ -1,5 +1,29 @@
 [
   {
+    "id": "‎",
+    "match": "‎",
+    "tags": [
+      "missing"
+    ],
+    "severity": 1
+  },
+  {
+    "id": "fuck",
+    "match": "fuck | Fuck | FUCK | fUck | fuCk | fucK | fUCK | FuCK | FUck | FUCk | ",
+    "tags": [
+      "general"
+    ],
+    "severity": 4
+  },
+  {
+    "id": "kys",
+    "match": "kys|Kys|kys|Kys|kys|Kys",
+    "tags": [
+      "general"
+    ],
+    "severity": 4
+  },
+  {
     "id": "1man1jar",
     "match": "1m1j|1man1jar|1 man 1 jar|one man one jar|one jar one man",
     "tags": [

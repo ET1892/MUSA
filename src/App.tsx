@@ -9,7 +9,7 @@ import Dashboard from './components/Dashboard';
 import Community from './components/Community';
 import { AuthContextProvider } from './components/AuthContext';
 import PicOfDay from './components/PicOfDay';
-import NearMiss from './components/NearMiss';
+import NearMissTst from './components/NearMissTst';
 
 function App() {
   
@@ -20,7 +20,7 @@ function App() {
         <Routes>
               <Route path="/" element={<SignIn />} />
               <Route path="signUp" element={<SignUp />} />
-              <Route path="account" 
+              <Route path="account"
               element={
                 <ProtectedRoute>
                   <Account />
@@ -47,7 +47,7 @@ function App() {
               <Route path="nearMiss"
               element={
                 <ProtectedRoute>
-                  <NearMiss />
+                  <NearMissTst />
                 </ProtectedRoute>
               } />
         </Routes>
