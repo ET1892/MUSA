@@ -201,7 +201,7 @@ populateData();
 const job = schedule.scheduleJob('5 0 * * *', populateData);
 
 // Respond with the current dataset on every request:
-server.get('/', (req, res) =>
+server.get('/nearmiss', (req, res) =>
 	{
 		res.json((currentNearMisses));
 	});
