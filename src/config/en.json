@@ -1,5 +1,13 @@
 [
   {
+    "id": "nigger",
+    "match": "nigger",
+    "tags": [
+      "racial"
+    ],
+    "severity": 4
+  },
+  {
     "id": "‎",
     "match": "‎",
     "tags": [

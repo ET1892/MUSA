@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.2e076789.css",
+    "main.js": "/static/js/main.e05e6b59.js",
+    "static/js/787.b1da3566.chunk.js": "/static/js/787.b1da3566.chunk.js",
+    "static/media/pexels-instawalli-176851.jpg": "/static/media/pexels-instawalli-176851.5b140bf9a931322ebdce.jpg",
+    "static/media/High_resolution_wallpaper_background_ID_77701924272.webp": "/static/media/High_resolution_wallpaper_background_ID_77701924272.0a0685e8679916b363d0.webp",
+    "index.html": "/index.html",
+    "main.2e076789.css.map": "/static/css/main.2e076789.css.map",
+    "main.e05e6b59.js.map": "/static/js/main.e05e6b59.js.map",
+    "787.b1da3566.chunk.js.map": "/static/js/787.b1da3566.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2e076789.css",
+    "static/js/main.e05e6b59.js"
+  ]
+}

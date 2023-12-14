@@ -6,6 +6,7 @@ import { useAuth } from './AuthContext';
 import { match } from 'assert';
 
 import badWordsList from '../config/en.json'; //bad words list
+import { time } from 'console';
 
 
 
@@ -41,9 +42,11 @@ const SendCommunityMessage = () => {
         }
         // badWords.forEach(word => {console.log(word)});
 
-        
+        try {
         // If checks pass, proceed with sending message
         const timestamp = serverTimestamp();
+        console.log("Timestamp before sending:", timestamp);
+        
         const data = {
             text: message,
             name: user?.email,
@@ -51,7 +54,6 @@ const SendCommunityMessage = () => {
             createdAt: timestamp,
         };
 
-        try {
             const messages = doc(collection(db, 'messages'));
             await setDoc(messages, data);
             // Reset message input after successful send
