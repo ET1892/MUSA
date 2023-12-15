@@ -1,7 +1,10 @@
 import FlowNavBar from './FlowNavBar';
 import { useEffect, useRef } from 'react';
+import React from 'react';
 
-// Paste your long CSS code here as a JavaScript string
+
+
+
 const customCSS = `
 html {
   height: 100%;
@@ -125,7 +128,7 @@ html body {
 
 
 
-const Dashboard = () => {
+const Dashboard: React.FC = () => {
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
 
   useEffect(() => {
@@ -135,21 +138,110 @@ const Dashboard = () => {
       iframe.srcdoc = `
         <html>
         <head>
-          <style>
-            ${customCSS}  /* Inject your custom CSS here */
-          </style>
-        </head>
-        <body>
-          <div class="container">
-            <div class="sky">
-              <div class="stars"></div>
-              <div class="stars1"></div>
-              <div class="stars2"></div>
-              <div class="shooting-stars"></div>
-            </div>
-          </div>
-        </body>
-        </html>
+        <style>
+        ${customCSS}
+      
+
+/*
+         .potd {
+          position: absolute;
+          top: 35%;
+          left: 35%;
+          transform: translate(-50%, -50%);
+          width: 400px;
+          height: 300px;
+          background-color: #111113; 
+          text-align: center;
+          border-radius: 10px;
+        }
+
+        
+        
+    
+        .potd-title {
+          font-size: 24px;
+          font-weight: bold;
+          margin-top: 20px;
+          font-family: 'Roboto', sans-serif;
+          color: white;
+        }
+    
+        .potd-description {
+          font-size: 14px;
+          margin-top: 10px;
+          font-family: 'Roboto', sans-serif;
+          color: white;
+        }
+
+        
+
+
+    
+        .near-miss {
+          position: absolute;
+          top: 35%;
+          left: 65%;
+          transform: translate(-50%, -50%);
+          width: 400px;
+          height: 300px;
+          background-color: #111113; 
+          text-align: center;
+          border-radius: 10px;
+        }
+    
+        .near-miss-title {
+          font-size: 24px;
+          font-weight: bold;
+          margin-top: 20px;
+          font-family: 'Roboto', sans-serif;
+          color: white;
+
+        }
+    
+        .near-miss-description {
+          font-size: 14px;
+          margin-top: 10px;
+          font-family: 'Roboto', sans-serif;
+          color: white;
+
+        }
+
+
+*/
+
+
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <div class="sky">
+          <div class="stars"></div>
+          <div class="stars1"></div>
+          div class="stars2"></div>
+          <div class="shooting-stars"></div>
+    
+        
+        
+        <!--
+          <div class="potd">
+        <div class="potd-title">Picture of the day</div>
+        <div class="potd-description">NASA's curated selection of the best images of the day</div>
+        <CameraEnhanceIcon fontSize="large" style={{ color: 'white' }} />
+      </div>
+
+      <div class="near-miss">
+        <div class="near-miss-title">Near Miss</div>
+        <div class="near-miss-description">A visualisation of a close encounter of an object to Earth</div>
+        <CallMissedOutgoingIcon fontSize="large" style={{ color: 'white' }} />
+      </div>
+
+        -->
+
+
+        </div>
+      </div>
+    </body>        
+    </html>
       `;
     }
   }, []);
