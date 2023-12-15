@@ -4,11 +4,7 @@ import FlowNavBar from './FlowNavBar'
 async function fetchNeo() {
   
     try{
-<<<<<<< HEAD
        const response = await fetch('https://musa.ocathain.ie/nearmiss');
-=======
-       const response = await fetch('https://localhost:4000/nearmiss');
->>>>>>> parent of 94b36fe (host)
        const json = await response.json();
        return json;
     }
@@ -16,7 +12,6 @@ async function fetchNeo() {
       console.log(error)
     }
    
-<<<<<<< HEAD
 }
 
 function reformatSizeData(s: number){
@@ -66,9 +61,6 @@ function svgScalingModifiers(s: number){
     }
     return {astMult, objMult};
 }
-=======
-  }
->>>>>>> parent of 94b36fe (host)
 
 const NearMiss = () => {
     const [data, setData] = useState<{ name: string, id: string, size: number, distance: string }[] | null>(null);
@@ -79,16 +71,11 @@ const NearMiss = () => {
 
     }, []);
     console.log(data);
-<<<<<<< HEAD
-
-=======
->>>>>>> parent of 94b36fe (host)
     return (
         <div>
             <header>
                 <FlowNavBar />
             </header>
-<<<<<<< HEAD
             <body className="grid grid-cols-2 gap-4 justify-center space-evenly space-y-10 p-10 m-10">
                 {data?.map(item => {
                     // Refine the data to a more understandable form.
@@ -120,17 +107,6 @@ const NearMiss = () => {
                     </div> 
                 })}
                 
-=======
-            <body className="flex flex-col justify-center items-center space-evenly space-y-10 p-10 m-10">
-                {data?.map(item => {
-                    return <div>
-                        <b>Name: {item.name}</b>
-                        <p>ID: {item.id}</p>
-                        <p>Size: {item.size}</p>
-                        <p>Distance: {item.distance}</p>
-                    </div> 
-                })}
->>>>>>> parent of 94b36fe (host)
             </body>
         </div>
       )

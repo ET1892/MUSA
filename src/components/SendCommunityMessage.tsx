@@ -6,10 +6,7 @@ import { useAuth } from './AuthContext';
 import { match } from 'assert';
 
 import badWordsList from '../config/en.json'; //bad words list
-<<<<<<< HEAD
 import { time } from 'console';
-=======
->>>>>>> parent of 94b36fe (host)
 
 
 
@@ -45,17 +42,11 @@ const SendCommunityMessage = () => {
         }
         // badWords.forEach(word => {console.log(word)});
 
-<<<<<<< HEAD
         try {
         // If checks pass, proceed with sending message
         const timestamp = serverTimestamp();
         console.log("Timestamp before sending:", timestamp);
         
-=======
-        
-        // If checks pass, proceed with sending message
-        const timestamp = serverTimestamp();
->>>>>>> parent of 94b36fe (host)
         const data = {
             text: message,
             name: user?.email,
@@ -63,10 +54,6 @@ const SendCommunityMessage = () => {
             createdAt: timestamp,
         };
 
-<<<<<<< HEAD
-=======
-        try {
->>>>>>> parent of 94b36fe (host)
             const messages = doc(collection(db, 'messages'));
             await setDoc(messages, data);
             // Reset message input after successful send

@@ -1,15 +1,7 @@
 import FlowNavBar from './FlowNavBar';
 import { useEffect, useRef } from 'react';
-<<<<<<< HEAD
 import React from 'react';
 
-
-
-
-=======
-
-// Paste your long CSS code here as a JavaScript string
->>>>>>> parent of 94b36fe (host)
 const customCSS = `
 html {
   height: 100%;
@@ -133,11 +125,7 @@ html body {
 
 
 
-<<<<<<< HEAD
 const Dashboard: React.FC = () => {
-=======
-const Dashboard = () => {
->>>>>>> parent of 94b36fe (host)
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
 
   useEffect(() => {
@@ -147,7 +135,6 @@ const Dashboard = () => {
       iframe.srcdoc = `
         <html>
         <head>
-<<<<<<< HEAD
         <style>
         ${customCSS}
       
@@ -252,23 +239,6 @@ const Dashboard = () => {
       </div>
     </body>        
     </html>
-=======
-          <style>
-            ${customCSS}  /* Inject your custom CSS here */
-          </style>
-        </head>
-        <body>
-          <div class="container">
-            <div class="sky">
-              <div class="stars"></div>
-              <div class="stars1"></div>
-              <div class="stars2"></div>
-              <div class="shooting-stars"></div>
-            </div>
-          </div>
-        </body>
-        </html>
->>>>>>> parent of 94b36fe (host)
       `;
     }
   }, []);
