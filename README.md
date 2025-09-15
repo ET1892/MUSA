@@ -2,7 +2,7 @@
 
 Description
 
-Team project 9 - MUSA, Maynooth University Space administration
+Team project 9 - MUSA, Maynooth University Space Administration
 
 Features
     Integration with NASA's Near Earth Object Web Service (NeoWs)
