@@ -10,7 +10,7 @@ import {CircularProgress, Box} from '@mui/material';
 async function fetchImages() {
   
   try{
-     const response = await fetch('https://musa.ocathain.ie/images');
+     const response = await fetch('http://localhost:4000/images');
      const json = await response.json();
      return json;
   }

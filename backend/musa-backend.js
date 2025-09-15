@@ -213,5 +213,12 @@ server.get('/images', (req, res) =>
 
 
 // Begin listening:
-https.createServer(options, server).listen(port);
-console.log('Starting on port ' + port + '.');
+// https.createServer(options, server).listen(port);
+// console.log('Starting on port ' + port + '.');
+
+
+// For local testing, use HTTP instead of HTTPS
+server.listen(port, () => {
+	console.log('Server running on http://localhost:' + port);
+  });
+  

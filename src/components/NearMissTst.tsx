@@ -4,7 +4,7 @@ import FlowNavBar from './FlowNavBar'
 async function fetchNeo() {
   
     try{
-       const response = await fetch('https://musa.ocathain.ie/nearmiss');
+       const response = await fetch('http://localhost:4000/nearmiss');
        const json = await response.json();
        return json;
     }
